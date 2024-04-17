@@ -57,4 +57,188 @@ Como Kubernetes é uma palavra difícil de se pronunciar - e de se escrever - a 
 
 ### Control Plane
 
-[portas_controlplane](/day-1/files/prints/portas_controlplane.png)
+![portas_controlplane](files/prints/portas_controlplane.png)
+
+> [!NOTE]
+Toda porta marcada por * é customizável, você precisa se certificar que a porta alterada também esteja aberta. 
+
+### WORKERS
+
+![workers](files/prints/workers.png)
+
+
+## Conceitos-chave do k8s<a name="conceitoschavesk8s"></a>
+
+> [!NOTE]
+É importante saber que a forma como o k8s gerencia os contêineres é ligeiramente diferente de outros orquestradores, como o Docker Swarm, sobretudo devido ao fato de que ele não trata os contêineres diretamente, mas sim através de pods.
+
+
+Vamos conhecer alguns dos principais conceitos que envolvem o k8s a seguir:
+
+- **Pod:** É o menor objeto do k8s. Como dito anteriormente, o k8s não trabalha com os contêineres diretamente, mas organiza-os dentro de pods, que são abstrações que dividem os mesmos recursos, como endereços, volumes, ciclos de CPU e memória. Um pod pode possuir vários contêineres;  
+
+- **Deployment:** É um dos principais controllers utilizados. O Deployment, em conjunto com o ReplicaSet, garante que determinado número de réplicas de um pod esteja em execução nos nós workers do cluster. Além disso, o Deployment também é responsável por gerenciar o ciclo de vida das aplicações, onde características associadas a aplicação, tais como imagem, porta, volumes e variáveis de ambiente, podem ser especificados em arquivos do tipo yaml ou json para posteriormente serem passados como parâmetro para o kubectl executar o deployment. Esta ação pode ser executada tanto para criação quanto para atualização e remoção do deployment;  
+
+- **ReplicaSets:** É um objeto responsável por garantir a quantidade de pods em execução no nó;
+
+- **Services:** É uma forma de você expor a comunicação através de um ClusterIP, NodePort ou LoadBalancer para distribuir as requisições entre os diversos Pods daquele Deployment. Funciona como um balanceador de carga.  
+
+
+## Instalando e customizando o Kubectl<a name="installkubectl"></a>
+
+- Instalação do Kubectl no GNU/Linux
+
+```
+curl -LO https://storage.googleapis.com/kubernetes-release/release/`curl -s https://storage.googleapis.com/kubernetes-release/release/stable.txt`/bin/linux/amd64/kubectl
+
+chmod +x ./kubectl
+
+sudo mv ./kubectl /usr/local/bin/kubectl
+
+kubectl version --client
+```  
+
+Para ver outras formas de instalação em outros Sistemas operacionais veja [aqui](https://kubernetes.io/docs/tasks/tools/)
+
+### Customizando o kubectl
+
+- Auto-complete
+
+No Bash:
+```
+# configura o autocomplete na sua sessão atual (antes, certifique-se de ter instalado o pacote bash-completion).  
+
+$ source <(kubectl completion bash) 
+
+# add autocomplete permanentemente ao seu shell.  
+
+$ echo "source <(kubectl completion bash)" >> ~/.bashrc 
+```
+
+No ZSH:
+```
+$ source <(kubectl completion zsh)
+
+$ echo "[[ $commands[kubectl] ]] && source <(kubectl completion zsh)"
+```  
+
+
+## Criando um cluster Kubernetes<a name="criandoclusterkubernetes"></a>
+
+### Criando o cluster em sua máquina local
+
+Para o noso estudo vamos instalar o **Kind(Kubernetes in Docker)**
+
+- Instalação no GNU/Linux
+
+```
+curl -Lo ./kind https://kind.sigs.k8s.io/dl/v0.14.0/kind-linux-amd64
+
+chmod +x ./kind
+
+sudo mv ./kind /usr/local/bin/kind
+```
+
+Para ver outras formas de instalação em outros Sistemas operacionais veja [aqui](https://kind.sigs.k8s.io/docs/user/quick-start/)
+
+
+### Criando um cluster com o Kind
+
+Para nosso estudo vamos Criar um arquivo de configuração para definir quantos e o tipo de nós no cluster que você deseja. No exemplo a seguir, será criado o arquivo de configuração **kind-3nodes.yaml** para especificar um cluster com 1 nó control-plane (que executará o control plane) e 2 workers.
+
+```
+vim kind-3nodes.yaml
+```
+Escreva ou copie e cole as linhas abaixo no arquivo criado: 
+```
+kind: Cluster
+apiVersion: kind.x-k8s.io/v1alpha4
+nodes:
+  - role: control-plane
+  - role: worker
+  - role: worker
+```  
+
+Agora vamos criar um cluster chamado **k8s-multinodes** utilizando as especificações definidas no arquivo **kind-3nodes.yaml.**
+
+```
+kind create cluster --name k8s-multinodes --config kind-3nodes.yaml
+```
+![kind_create_cluster](files/prints/kind_create_cluster.png)
+
+- Para visualizar o clusters utilizando o kind, execute o comando a seguir.
+```
+$ kind get clusters
+```
+
+- Listando os nodes do cluster com o **kubectl**.  
+```
+$ kubectl get nodes
+```  
+![list_nodes](files/prints/list_nodes.png)
+
+
+- Excluindo o cluster.
+> [!note]
+Não exclua o cluster agora, vamos dar seguimento nos estudos. Ao terminar fique a vontade para faze-lo.
+```
+kind delete cluster -n k8s-multinodes
+```
+![delete_cluster](files/prints/delete_cluster.png)
+
+## Primeiros passos no k8s<a name="primeirospassok8s"></a>
+
+### Verificando os namespaces e pods
+
+O k8s organiza tudo dentro de namespaces. Por meio deles, podem ser realizadas limitações de segurança e de recursos dentro do cluster, tais como pods, replication controllers e diversos outros. Para visualizar os namespaces disponíveis no cluster, digite:
+
+```
+$ kubectl get namespaces
+```
+![namespaces](files/prints/namespaces.png)
+
+Vamos listar os pods do namespace kube-system utilizando o comando a seguir.
+
+```
+kubectl get pod -n kube-system
+```
+![namespace_kubesystem](files/prints/namespace_kubesystem.png)
+
+Também é possível listar todos os pods de todos os namespaces com o comando a seguir.
+
+```
+kubectl get pods -A
+```
+![get_pod_all](files/prints/get_pods_all_namespaces.png)
+
+Há a possibilidade ainda, de utilizar o comando com a opção -o wide, que disponibiliza maiores informações sobre o recurso, inclusive em qual nó o pod está sendo executado. Exemplo:
+
+```
+kubectl get pods -A -o wide
+```
+![get_pod_all_wide](files/prints/get_pod_all_wide.png)
+
+
+## Executando nosso primeiro pod no k8s<a name="primeiropodl8s"></a>
+
+Iremos iniciar o nosso primeiro pod no k8s. Para isso, executaremos o comando a seguir.
+
+```
+$ kubectl run nginx --image nginx
+```
+![pod_nginx](files/prints/pod_nginx.png)
+
+Listando os pods com kubectl get pods, obteremos a seguinte saída.
+
+```
+$ kubectl get pods
+```
+![list_pods](files/prints/list_pods.png)
+
+Vamos agora remover o nosso pod com o seguinte comando.
+
+```
+$ kubectl delete pod nginx
+```
+![delete_pod_nginx](files/prints/delete_pod_nginx.png)
+
