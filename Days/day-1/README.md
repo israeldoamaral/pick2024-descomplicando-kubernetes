@@ -268,7 +268,7 @@ Ao usar o **kubectl apply**, o Kubernetes verifica o estado atual dos recursos n
 O kubectl apply é especialmente útil porque é idempotente, o que significa que pode ser executado várias vezes sem efeitos colaterais indesejados. Ele se adapta ao estado atual do cluster e aplica apenas as alterações necessárias para alcançar o estado desejado conforme descrito no arquivo de configuração. Isso simplifica o processo de gerenciamento e implantação de recursos no Kubernetes.
 
 
-## Expondo o pod e criando um Service
+## Expondo o pod e criando um Service<a name="expondopod"></a>
 
 Os dispositivos externos ao cluster, por padrão, não têm acesso aos pods criados, diferentemente do que ocorre em outros sistemas de contêineres.  
 
@@ -312,7 +312,7 @@ kubectl get services
 
 - Observe na imagem acima, que há dois services no nosso cluster: o primeiro é para uso do próprio k8s, enquanto o segundo foi o quê acabamos de criar.  
 
-## Finalizando o nosso estudo
+## Finalizando o nosso estudo<a name="finalizandodia"></a>
 
 ```
 kubectl delete -f pod-template.yaml
