@@ -242,3 +242,87 @@ $ kubectl delete pod nginx
 ```
 ![delete_pod_nginx](files/prints/delete_pod_nginx.png)
 
+### Outra forma de executar o pod no k8s
+
+Uma outra forma de criar um pod ou qualquer outro objeto no Kubernetes é através da utilizaçâo de uma arquivo manifesto, que é uma arquivo em formato YAML onde você passa todas as definições do seu objeto. Mas pra frente vamos falar muito mais sobre como construir arquivos manifesto, mas agora eu quero que você conheça a opção --dry-run do kubectl, pos com ele podemos simular a criação de um resource e ainda ter um manifesto criado automaticamente.  
+
+### criando um template de um pod:
+
+```
+kubectl run meu-nginx --image nginx --dry-run=client -o yaml > pod-template.yaml
+```  
+
+- Acima estamos utilizando o parametro '-o', utilizado para modificar a saída para um arquivo template de um deployment com o formato YAML.  
+
+Com o arquivo, agora você consegue criar um pod utilizando o manifesto que criamos da seguinte forma:  
+
+```
+kubectl apply -f pod-template.yaml
+```
+![pod_template_apply](files/prints/pod_template_apply.png)
+
+O parâmetro **apply** do kubectl é usado para aplicar um arquivo de configuração ou uma especificação de recursos Kubernetes a um cluster Kubernetes. Ele permite criar, atualizar ou remover recursos no cluster com base nas definições fornecidas no arquivo de configuração.
+
+Ao usar o **kubectl apply**, o Kubernetes verifica o estado atual dos recursos no cluster e aplica as alterações necessárias para garantir que o estado correspondente ao especificado no arquivo de configuração seja alcançado. Isso significa que ele pode criar novos recursos, atualizar os existentes para corresponder ao arquivo de configuração ou remover aqueles que não estão mais presentes na definição.
+
+O kubectl apply é especialmente útil porque é idempotente, o que significa que pode ser executado várias vezes sem efeitos colaterais indesejados. Ele se adapta ao estado atual do cluster e aplica apenas as alterações necessárias para alcançar o estado desejado conforme descrito no arquivo de configuração. Isso simplifica o processo de gerenciamento e implantação de recursos no Kubernetes.
+
+
+## Expondo o pod e criando um Service
+
+Os dispositivos externos ao cluster, por padrão, não têm acesso aos pods criados, diferentemente do que ocorre em outros sistemas de contêineres.  
+
+Antes de expor o pod, vamos exclui-lo:
+```
+$ kubectl delete pod meu-nginx
+```
+
+Vamos alterar o template yaml adicionando a porta que queremos expor o pod com o parâmetro **--port**.  
+
+Execute o seguinte comando:
+```
+kubectl run meu-nginx --image nginx --port 80 --dry-run=client -o yaml > pod-template.yaml
+```
+
+Aplique o template com o seguinte comando:
+```
+kubectl apply -f pod-template.yaml
+```
+
+Liste os pods:
+
+```
+kubectl get pods
+```
+![get_pod_meu_nginx](files/prints/list_pod_meu_nginx.png)
+
+Agora vamos expor de verdade, criando um **Service** que é utilizado justamente para expor pods para acesso externo.
+
+O comando a seguir cria um objeto do k8s chamado de Service
+```
+kubectl expose pod meu-nginx
+```
+![expose_meu_nginx](files/prints/expose_meu_nginx.png)
+
+Podemos listar todos os services com o comando a seguir.
+```
+kubectl get services
+```
+![get_services](files/prints/get_services.png)
+
+- Observe na imagem acima, que há dois services no nosso cluster: o primeiro é para uso do próprio k8s, enquanto o segundo foi o quê acabamos de criar.  
+
+## Finalizando o nosso estudo
+
+```
+kubectl delete -f pod-template.yaml
+```
+```
+kubectl delete service meu-nginx
+```
+ Exclua também o cluster k8s
+ ```
+ kind delete cluster -n k8s-multinodes
+ ```
+
+ # FUI!!!!
