@@ -12,6 +12,7 @@
 - [Executando nosso primeiro pod no k8s](/Days/day-1/README.md#primeiropodl8s)  
 - [Expondo o pod e criando um Service](/Days/day-1/README.md#expondopod)  
 - [Finalizando... Limpando tudo](/Days/day-1/README.md#finalizandodia)  
+- [Desafios day-1](/Days/desafios/README.md) 
 
 ### Day-2  
 - [dia-2](/Days/day-2/README.md)   
