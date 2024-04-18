@@ -135,4 +135,4 @@ Executando o meu-primeiro-pod.yaml
 kubectl apply -f meu-primeiro-pos.yaml
 ```
 
-[Voltar para o início do repositório](pick2024-descomplicando-kubernetes/README.md)
+[Voltar para o início do repositório](https://github.com/israeldoamaral/pick2024-descomplicando-kubernetes)
