@@ -15,7 +15,15 @@
 - [Desafio](Days/desafios/day-1/README.md) 
 
 ### Day-2  
-- [dia-2](/Days/day-2/README.md)   
+- [O que é um Pod](/Days/day-2/README.md#oqueeumpod)  
+- [Criando um Pod](/Days/day-2/README.md#criandoumpod)  
+- [Comando Describe](/Days/day-2/README.md#describepod)  
+- [Deletando um Pod](/Days/day-2/README.md#deletandoumpod)  
+- [Criando Pods com arquivos YAML](/Days/day-2/README.md#criandopodeatravesdoyaml)  
+- [Criando um Pod com mais de um Container](/Days/day-2/README.md#criandopodecommaisdeumcontainer)  
+- [Comando Attach e Exec](/Days/day-2/README.md#attacheexec)  
+- [Criando um container com limites de memória e cpu](/Days/day-2/README.md#criandoumcontainercomlimitesdememoriaecpu)  
+- [Adicionando um volume EmptyDir no Pod](/Days/day-2/README.md#adicionandovolumeemptydir)
 
 ### Day-3  
 - [dia-3](/Days/day-3/README.md)  
