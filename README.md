@@ -28,3 +28,13 @@
 
 ### Day-3  
 - [dia-3](/Days/day-3/README.md)  
+
+
+### Day-4  
+- [dia-4](/Days/day-4/README.md)
+
+### Day-5  
+- [dia-5](/Days/day-5/README.md)  
+
+### Day-6  
+- [dia-6](/Days/day-6/README.md)  
