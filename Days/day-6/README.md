@@ -286,7 +286,10 @@ Source:
 Events:            <none>
 ```
 
-Dessa forma estamos criando o PV utilizando o provisionador hostPath, que é um provisionador para ser utilizado em testes e desenvolvimento, já que os dados armazenados só estão disponíveis no node específico, por isso bora para mais um exemplo, mas agora utilizando o provisionador nfs, que é um sistema de arquivos de rede que permite compartilhar arquivos entre várias máquinas na rede.
+Dessa forma estamos criando o PV utilizando o provisionador hostPath, que é um provisionador para ser utilizado em testes e desenvolvimento, já que os dados armazenados só estão disponíveis no node específico.
+
+<a name="persistentvolumenfs"></a>
+Para melhorar, bora para mais um exemplo, mas agora utilizando o provisionador nfs, que é um sistema de arquivos de rede que permite compartilhar arquivos entre várias máquinas na rede.
 
 
 Primeira coisa que vamos fazer é criar uma nova maquina virtual para ser o nosso servidor FNS. Caso você não queira criar uma máquina virtual basta executar os mesmo comando na sua maquina local de teste.

@@ -37,4 +37,9 @@
 - [dia-5](/Days/day-5/README.md)  
 
 ### Day-6  
-- [dia-6](/Days/day-6/README.md)  
+- [O que iremos ver hoje?](/Days/day-6/README.md#oquevamosaprenderhoje)  
+- [O que são volumes?](/Days/day-6/README.md#oquesaovolumes)  
+- [Storage Class](/Days/day-6/README.md#storageclass)  
+- [PV - Persistent Volume](/Days/day-6/README.md#persistentvolume)  
+- [PV - Persistent Volume nfs](/Days/day-6/README.md#persistentvolumenfs)  
+- [PVC - Persistent Volume Claim](/Days/day-6/README.md#persistentvolumeclaim)     
