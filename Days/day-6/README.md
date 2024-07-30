@@ -416,7 +416,7 @@ persistentvolume/meu-pv created
 Tudo certo com o nosso PV, agora eu acho que já podemos passar para o próximo tópico, que é o PVC.
 
 
-### PVC - Persistent Volume Claim<a name="persistentvolumeclaim"></a>
+## PVC - Persistent Volume Claim<a name="persistentvolumeclaim"></a>
 
 O PVC é uma solicitação de armazenamento feita pelos usuários ou aplicativos no cluster Kubernetes. Ele permite que os usuários solicitem um volume específico, com base em tamanho, tipo de armazenamento e outras características. O PVC age como uma "assinatura" que reivindica um PV para ser usado por um contêiner. O Kubernetes tenta associar automaticamente um PVC a um PV compatível, garantindo que o armazenamento seja alocado corretamente.
 
