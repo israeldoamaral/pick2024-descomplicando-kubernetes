@@ -1,0 +1,29 @@
+## Lição de Casa
+
+Quero que você crie e gerencie um StatefulSet em seu próprio ambiente Kubernetes. Comece criando um StatefulSet simples com um par de Pods e depois tente escalá-lo para mais Pods. Experimente também apagar um Pod e veja como o Kubernetes lida com isso.
+
+Em seguida, brinque com os Services. Exponha seu StatefulSet através de um Service do tipo ClusterIP e depois tente mudar para um NodePort ou LoadBalancer. Teste a conectividade para garantir que tudo está funcionando corretamente.
+
+E por último, mas não menos importante, crie um Service do tipo ExternalName e aponte-o para um serviço externo de sua escolha. Verifique se o serviço externo está acessível de dentro de seus Pods.
+
+
+
+
+
+
+
+Desafio StatefulSets e Headless Services no Kubernetes
+🔬 Neste desafio, você vai configurar e manipular um StatefulSet e um Headless Service no Kubernetes. Seu objetivo é demonstrar sua compreensão desses conceitos cruciais do Kubernetes.
+
+Instruções
+IMPORTANTE: Tudo deve ser criado utilizando manifestos YAML. Os manifestos devem ser criados no diretório /root/manifests.
+
+🏗️ Crie um StatefulSet do Nginx com três réplicas, cada uma com seu próprio volume persistente. O StatefulSet deve ser nomeado "giropops-set".
+
+🎯 Configure um Headless Service para o StatefulSet criado. O serviço deve ser nomeado "giropops-service".
+
+🕵️‍♀️ Verifique se o StatefulSet, o Service e o Pod foram criados corretamente e se estão em execução.
+
+🔄 Faça um upgrade do StatefulSet para a versão 1.19.0 do Nginx.
+
+🚀 Use as guias "Terminal" e "Editor" para concluir este desafio. Após concluir as instruções, pressione o botão Check para verificar se você solucionou o desafio corretamente.
