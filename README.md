@@ -43,3 +43,16 @@
 - [PV - Persistent Volume](/Days/day-6/README.md#persistentvolume)  
 - [PV - Persistent Volume nfs](/Days/day-6/README.md#persistentvolumenfs)  
 - [PVC - Persistent Volume Claim](/Days/day-6/README.md#persistentvolumeclaim)     
+
+
+### Day-7  
+- [O que iremos ver hoje?](/Days/day-7/README.md#oquevamosaprenderhoje)  
+- [O que é um StatefulSet?](/Days/day-7/README.md#oqueeumstatefulset)  
+- [Criando nosso primeiro StatefulSet](/Days/day-7/README.md#criandonossoprimeirostatefulset)  
+- [Criando nosso primeiro Headless Service](/Days/day-6/README.md#criando nossoprimeiroheadlessservice)  
+- [Removendo o nosso StatefulSet](/Days/day-7/README.md#removendoonossostatefulset)  
+- [O que são Services](/Days/day-7/README.md#oquesaoservices) 
+- [Criando os nossos Services ClusterIP e NodePort](/Days/day-7/README.md#criandoosnossosservicesclusteripenodeport) 
+- [Criando os nossos Services LoadBalancer e ExternalIP](/Days/day-7/README.md#criandoosnossosservicesloadbalancereexternalip) 
+- [Lição de Casa](/Days/day-7/README.md#licaodecasa) 
+- [Desafio](/Days/day-7/README.md#desafio) 
