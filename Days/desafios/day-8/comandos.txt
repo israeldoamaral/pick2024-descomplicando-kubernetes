@@ -1,0 +1,26 @@
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout nginx.key -out nginx.crt
+
+kubectl create secret tls nginx-secret --cert=nginx.crt --key=nginx.key
+
+kubectl get secrets
+
+kubectl get secrets nginx-secret -o yaml
+
+
+### criando o confgmap
+
+kubectl apply -f configmap.yaml
+
+kubectl get configmaps
+
+kubectl get configmaps nginx-config -o yaml
+
+### criando o pod
+
+kubectl apply -f nginx-https-pod.yaml
+
+kubectl get pods
+
+### criando o service
+
+kubectl apply -f service.yaml
