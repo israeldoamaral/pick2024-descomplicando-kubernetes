@@ -58,10 +58,10 @@
 - [Desafio](/Days/day-7/README.md#desafio) 
 
 ### Day-8  
-- [O que iremos ver hoje?](/Days/day-8/README.  
+- [O que iremos ver hoje?](/Days/day-8/README.md#oquevamosaprenderhoje)  
 
 ### Day-9  
-- [O que iremos ver hoje?](/Days/day-9/README.  
+- [O que iremos ver hoje?](/Days/day-9/README.md#oquevamosaprenderhoje)  
 
 ### Day-10  
-- [O que iremos ver hoje?](/Days/day-8/README.
+- [O que iremos ver hoje?](/Days/day-8/README.md#oquevamosaprenderhoje)
