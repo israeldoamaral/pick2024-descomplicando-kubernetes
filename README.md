@@ -56,3 +56,12 @@
 - [Criando os nossos Services LoadBalancer e ExternalIP](/Days/day-7/README.md#criandoosnossosservicesloadbalancereexternalip) 
 - [Lição de Casa](/Days/day-7/README.md#licaodecasa) 
 - [Desafio](/Days/day-7/README.md#desafio) 
+
+### Day-8  
+- [O que iremos ver hoje?](/Days/day-8/README.  
+
+### Day-9  
+- [O que iremos ver hoje?](/Days/day-9/README.  
+
+### Day-10  
+- [O que iremos ver hoje?](/Days/day-8/README.
