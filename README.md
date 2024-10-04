@@ -64,4 +64,8 @@
 - [O que iremos ver hoje?](/Days/day-9/README.md#oquevamosaprenderhoje)  
 
 ### Day-10  
-- [O que iremos ver hoje?](/Days/day-8/README.md#oquevamosaprenderhoje)
+- [O que iremos ver hoje?](/Days/day-10/README.md#oquevamosaprenderhoje)
+
+### Day-13  
+- [O que iremos ver hoje?](/Days/day-13/README.md#oquevamosaprenderhoje)  
+- [Desafio](/Days/desafios/day-13/README.md#desafio)

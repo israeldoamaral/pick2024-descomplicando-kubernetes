@@ -1,0 +1,24 @@
+# https://kubernetes.io/docs/concepts/services-networking/ingress/#the-ingress-resource
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: giropops-senhas-ingress
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+spec:
+  ingressClassName: nginx
+  tls:
+  - hosts:
+    - giropopssenhas.israeldoamaral.com.br
+  rules:
+  - host: giropopssenhas.israeldoamaral.com.br
+    http:
+      paths:
+      - path: /
+        pathType: Prefix
+        backend:
+          service:
+            name: giropops-senhas-service
+            port:
+              number: 5000

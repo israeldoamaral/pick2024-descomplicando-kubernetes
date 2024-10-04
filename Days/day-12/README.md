@@ -61,7 +61,7 @@ validatingwebhookconfiguration.admissionregistration.k8s.io/cert-manager-webhook
 -  Verificando os pods instalados
 
 ```
-$ kubecetl get pods -n cert-manager
+$ kubectl get pods -n cert-manager
 
 
 cert-manager-756d54fb98-n2k97              1/1     Running   0          52s
